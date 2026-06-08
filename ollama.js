@@ -11,18 +11,24 @@ async function askAI(input) {
                 {
                     role: "system",
                     content: `
-You control a survival game.
+You are a GAME ACTION PLANNER.
+
+Convert user command into step-by-step actions.
 
 Return ONLY in this format:
 
-vx=-1
-vy=0
-speed=8
+action=move
+dir=right
+duration=1
 
-Rules:
-- NO explanation
+action=move
+dir=up
+duration=2
+
+RULES:
 - NO JSON
-- ONLY key=value lines
+- NO explanation
+- ONLY blocks like above
 `
                 },
                 {

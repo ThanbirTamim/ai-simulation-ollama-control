@@ -2,6 +2,7 @@ const SpeechRecognition =
     window.SpeechRecognition || window.webkitSpeechRecognition;
 
 const recognition = new SpeechRecognition();
+
 recognition.continuous = true;
 recognition.lang = "en-US";
 
@@ -14,9 +15,9 @@ recognition.onresult = async (event) => {
     document.getElementById("status").innerText = "Heard: " + text;
 
     const raw = await askAI(text);
-    const cmd = parseAI(raw);
+    const plan = parsePlan(raw);
 
-    window.cow = cmd;
+    actionQueue.push(...plan); // 🔥 add to queue
 };
 
 recognition.onend = () => recognition.start();
